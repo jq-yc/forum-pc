@@ -3,6 +3,7 @@
     <!-- 轮播图 -->
     <div>
       <login-swiper />
+      <div class="login-container"></div>
     </div>
   </div>
 </template>
