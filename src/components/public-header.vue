@@ -78,6 +78,8 @@ export default {};
   background-color: #393d49;
   color: white;
   height: 60px;
+  max-width: 1200px;
+  margin: auto;
 }
 .top-menu {
   display: flex;
@@ -106,6 +108,8 @@ export default {};
   justify-content: space-between;
   height: 50px;
   margin-bottom: 15px;
+  max-width: 1200px;
+  margin: auto;
 }
 .home-nav {
   margin: 0 15px;
