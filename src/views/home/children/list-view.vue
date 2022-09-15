@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="list-view">
+  <div class="px-5">
+    <div class="list-view py-3" v-for="item in 8" :key="item">
       <div class="user-info">
         <span>掘金酱</span>
         <span class="mx-2">|</span>
@@ -38,8 +38,9 @@ export default {
 
 <style scoped>
 .list-view {
-  width: 900px;
-  height: 140px;
+  width: 700px;
+  background-color: white;
+  border-bottom: 1px solid rgba(228, 230, 235, 0.5);
 }
 .user-info {
   height: 22px;

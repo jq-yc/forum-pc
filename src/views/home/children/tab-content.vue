@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white mr-4">
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="推荐" name="first"
         ><list-view></list-view

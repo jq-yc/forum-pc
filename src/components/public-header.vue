@@ -1,59 +1,60 @@
 <template>
-  <div>
+  <div class="bg-white mb-4">
     <!-- 上 -->
-    <div class="header-top">
-      <div>
-        <img
-          src="http://front.dev.toimc.com:22500/img/logo-2.c66f7210.png"
-          alt=""
-        />
-      </div>
-      <div class="top-menu">
-        <div class="menu-item">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-jiaoliu"></use></svg
-          ><span>交流</span>
+    <div class="public-header">
+      <div class="header-top">
+        <div>
+          <img
+            src="http://front.dev.toimc.com:22500/img/logo-2.c66f7210.png"
+            alt=""
+          />
         </div>
-        <div class="menu-item">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-mingxinganli"></use></svg
-          ><span>案例</span>
+        <div class="top-menu">
+          <div class="menu-item">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-jiaoliu"></use></svg
+            ><span>交流</span>
+          </div>
+          <div class="menu-item">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-mingxinganli"></use></svg
+            ><span>案例</span>
+          </div>
+          <div class="menu-item">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-uicn"></use></svg
+            ><span>框架</span>
+          </div>
         </div>
-        <div class="menu-item">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-uicn"></use></svg
-          ><span>框架</span>
-        </div>
-      </div>
-      <div class="header-right">
-        <svg class="icon icon-profile" aria-hidden="true">
-          <use xlink:href="#icon-icon-test"></use>
-        </svg>
-        <router-link to="./login">登入</router-link>
-        <router-link to="">注册</router-link>
-        <a href=""
-          ><svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-QQ"></use></svg
-        ></a>
-        <a href="">
-          <svg class="icon" aria-hidden="true">
-            <use
-              xlink:href="#icon-social-weibo
+        <div class="header-right">
+          <svg class="icon icon-profile" aria-hidden="true">
+            <use xlink:href="#icon-icon-test"></use>
+          </svg>
+          <router-link to="./login">登入</router-link>
+          <router-link to="">注册</router-link>
+          <a href=""
+            ><svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-QQ"></use></svg
+          ></a>
+          <a href="">
+            <svg class="icon" aria-hidden="true">
+              <use
+                xlink:href="#icon-social-weibo
 "
-            ></use></svg
-        ></a>
+              ></use></svg
+          ></a>
+        </div>
       </div>
     </div>
     <!-- 下 -->
     <div class="header-bottom">
       <div>
         <router-link to="" class="home-nav">首页</router-link>
-        <router-link to="" class="home-nav">提问</router-link>
-        <router-link to="" class="home-nav">分享</router-link>
-        <router-link to="" class="home-nav">讨论</router-link>
-        <router-link to="" class="home-nav">建议</router-link>
-        <router-link to="" class="home-nav">公告</router-link>
-        <router-link to="" class="home-nav">动态</router-link>
+        <router-link to="" class="home-nav">沸点</router-link>
+        <router-link to="" class="home-nav">课程</router-link>
+        <router-link to="" class="home-nav">直播</router-link>
+        <router-link to="" class="home-nav">活动</router-link>
+        <router-link to="" class="home-nav">商城</router-link>
       </div>
       <div class="publish-btn">
         <span
@@ -71,13 +72,15 @@ export default {};
 </script>
 
 <style scoped>
+.public-header {
+  background-color: #393d49;
+}
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #393d49;
   color: white;
-  height: 60px;
+
   max-width: 1200px;
   margin: auto;
 }
