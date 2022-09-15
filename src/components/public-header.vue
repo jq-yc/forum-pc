@@ -4,10 +4,11 @@
     <div class="public-header">
       <div class="header-top">
         <div>
-          <img
+          <!-- <img
             src="http://front.dev.toimc.com:22500/img/logo-2.c66f7210.png"
             alt=""
-          />
+          /> -->
+          <img class="w-60" :src="require('@/assets/goudaner.png')" alt="" />
         </div>
         <div class="top-menu">
           <div class="menu-item">
