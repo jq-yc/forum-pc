@@ -15,6 +15,11 @@ const routes = [
     name: "login",
     component: () => import("@/views/login/login.vue"),
   },
+  {
+    path: "/publish",
+    name: "publish",
+    component: () => import("@/views/publishArticle/publishArticle.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -31,8 +31,12 @@
           <svg class="icon icon-profile" aria-hidden="true">
             <use xlink:href="#icon-icon-test"></use>
           </svg>
-          <router-link to="./login">登入</router-link>
-          <router-link to="">注册</router-link>
+          <div v-if="nickname">{{ nickname }}</div>
+          <div v-else>
+            <router-link to="./login">登入</router-link>
+            <router-link to="">注册</router-link>
+          </div>
+
           <a href=""
             ><svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-QQ"></use></svg
@@ -62,14 +66,25 @@
           ><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-sousuo"></use></svg
         ></span>
-        <el-button type="primary">发表新帖</el-button>
+        <el-button type="primary" @click="publish()">发表新帖</el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    publish() {
+      this.$router.push("/publish");
+    },
+  },
+  computed: {
+    nickname() {
+      return this.$store.state.userInfo?.nickname;
+    },
+  },
+};
 </script>
 
 <style scoped>

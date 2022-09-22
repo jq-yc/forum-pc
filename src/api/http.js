@@ -1,7 +1,7 @@
 const axios = require("axios");
 import { Message } from "element-ui";
 const instance = axios.create({
-  baseURL: "",
+  baseURL: "http://localhost:3366",
   timeout: 5000,
 });
 
