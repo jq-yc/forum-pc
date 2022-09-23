@@ -1,6 +1,6 @@
 <template>
   <div class="px-5">
-    <div class="list-view py-3" v-for="item in 8" :key="item">
+    <div class="list-view py-3" v-for="item in list" :key="item">
       <div class="user-info">
         <span>掘金酱</span>
         <span class="mx-2">|</span>
@@ -8,9 +8,9 @@
         <span class="mx-2">|</span>
         <span>前端</span>
       </div>
-      <div class="list-title mb-2">聊聊我在新加坡的生活和工作体验</div>
+      <div class="list-title mb-2">{{ item.title }}</div>
       <div class="list-content mb-2">
-        本文主要分享了笔者在新加坡生活和工作了几个月以来，在租房、出行、吃饭、工作、教育等方面的生活和工作体验。
+        {{ item.content }}
       </div>
       <div class="list-handle flex text-sm">
         <div class="mr-4">
@@ -27,12 +27,55 @@
         </div>
       </div>
     </div>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="total"
+      :page-size="pageSize"
+      :current-page.sync="pageNum"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+    </el-pagination>
   </div>
 </template>
 
 <script>
+import { getArticleList } from "@/api/article.js";
 export default {
   name: "ListView",
+  data() {
+    return {
+      pageSize: 5,
+      pageNum: 1,
+      total: 0,
+      list: [],
+    };
+  },
+  methods: {
+    articleList() {
+      getArticleList(this.pageSize, this.pageNum).then((response) => {
+        const { data } = response;
+        if (data.data.page) {
+          this.total = data.data.page.count;
+          this.list = data.data.list;
+        }
+      });
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.pageSize = val;
+      this.articleList();
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      this.pageNum = val;
+      this.articleList();
+    },
+  },
+  created() {
+    this.articleList();
+  },
 };
 </script>
 

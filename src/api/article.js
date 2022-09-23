@@ -7,3 +7,11 @@ export function publishArticle(data) {
     data,
   });
 }
+
+export function getArticleList(pageSize, pageNum) {
+  let _url = `/api/post/list?pageSize=${pageSize}&pageNum=${pageNum}`;
+  return $http({
+    url: _url,
+    method: "get",
+  });
+}
