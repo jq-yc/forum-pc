@@ -10,7 +10,7 @@ export function userRegister(data) {
 
 export function userLogin(data) {
   return $http({
-    url: "/api/auth/login",
+    url: "/api/user/login",
     method: "post",
     data,
   });

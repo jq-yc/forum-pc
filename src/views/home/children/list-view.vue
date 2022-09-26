@@ -1,6 +1,6 @@
 <template>
   <div class="px-5">
-    <div class="list-view py-3" v-for="item in list" :key="item">
+    <div class="list-view py-3" v-for="item in list" :key="item.id">
       <div class="user-info">
         <span>掘金酱</span>
         <span class="mx-2">|</span>
@@ -9,7 +9,7 @@
         <span>前端</span>
       </div>
       <div class="list-title mb-2">{{ item.title }}</div>
-      <div class="list-content mb-2">
+      <div class="list-content mb-2 truncate">
         {{ item.content }}
       </div>
       <div class="list-handle flex text-sm">
@@ -56,9 +56,9 @@ export default {
     articleList() {
       getArticleList(this.pageSize, this.pageNum).then((response) => {
         const { data } = response;
-        if (data.data.page) {
-          this.total = data.data.page.count;
-          this.list = data.data.list;
+        if (data.page) {
+          this.total = data.page.count;
+          this.list = data.data;
         }
       });
     },

@@ -15,3 +15,11 @@ export function getArticleList(pageSize, pageNum) {
     method: "get",
   });
 }
+
+export const upLoad = (formData) => {
+  const url = "/api/file/upload";
+  var configs = {
+    headers: { "Content-Type": "multipart/form-data" },
+  };
+  return $http.post(url, formData, configs);
+};

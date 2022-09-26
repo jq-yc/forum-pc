@@ -106,7 +106,8 @@ export default {
         userLogin(_data).then((response) => {
           const { data } = response;
           if (data.data) {
-            this.$store.commit("SET_USERINFO", data.data);
+            this.$store.commit("SET_USERINFO", data.data.user);
+            localStorage.setItem("setToken", data.data.token);
             this.$message.success("登录成功，跳转至首页");
             this.$router.push("/");
           }
