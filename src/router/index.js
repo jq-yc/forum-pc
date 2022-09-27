@@ -20,6 +20,11 @@ const routes = [
     name: "publish",
     component: () => import("@/views/publishArticle/publishArticle.vue"),
   },
+  {
+    path: "/detail",
+    name: "detail",
+    component: () => import("@/views/articleDetail/articleDetail.vue"),
+  },
 ];
 
 const router = new VueRouter({

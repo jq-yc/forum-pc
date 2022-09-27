@@ -23,3 +23,11 @@ export const upLoad = (formData) => {
   };
   return $http.post(url, formData, configs);
 };
+
+export function getArticleDetail(id) {
+  let _url = `/api/post?id=${id}`;
+  return $http({
+    url: _url,
+    method: "get",
+  });
+}

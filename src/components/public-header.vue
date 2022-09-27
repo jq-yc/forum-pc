@@ -54,7 +54,7 @@
     <!-- 下 -->
     <div class="header-bottom">
       <div>
-        <router-link to="" class="home-nav">首页</router-link>
+        <router-link to="/" class="home-nav">首页</router-link>
         <router-link to="" class="home-nav">沸点</router-link>
         <router-link to="" class="home-nav">课程</router-link>
         <router-link to="" class="home-nav">直播</router-link>

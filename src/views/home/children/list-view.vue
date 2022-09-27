@@ -1,6 +1,11 @@
 <template>
   <div class="px-5">
-    <div class="list-view py-3" v-for="item in list" :key="item.id">
+    <div
+      class="list-view py-3"
+      v-for="item in list"
+      :key="item.id"
+      @click="toDetail(item.id)"
+    >
       <div class="user-info">
         <span>掘金酱</span>
         <span class="mx-2">|</span>
@@ -71,6 +76,9 @@ export default {
       console.log(`当前页: ${val}`);
       this.pageNum = val;
       this.articleList();
+    },
+    toDetail(id) {
+      this.$router.push({ path: "/detail", query: { id } });
     },
   },
   created() {
