@@ -25,6 +25,11 @@ const routes = [
     name: "detail",
     component: () => import("@/views/articleDetail/articleDetail.vue"),
   },
+  {
+    path: "/setting",
+    name: "mySetting",
+    component: () => import("../views/mySetting/mySetting.vue"),
+  },
 ];
 
 const router = new VueRouter({
