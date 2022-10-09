@@ -29,6 +29,28 @@ const routes = [
     path: "/setting",
     name: "mySetting",
     component: () => import("../views/mySetting/mySetting.vue"),
+    children: [
+      {
+        path: "personal-info",
+        component: () =>
+          import("../views/mySetting/personalInfo/personalInfo.vue"),
+      },
+      {
+        path: "account-setting",
+        component: () =>
+          import("../views/mySetting/accountSetting/accountSetting.vue"),
+      },
+      {
+        path: "shield-manage",
+        component: () =>
+          import("../views/mySetting/shieldManage/shieldManage.vue"),
+      },
+      {
+        path: "resume-manage",
+        component: () =>
+          import("../views/mySetting/resumeManage/resumeManage.vue"),
+      },
+    ],
   },
 ];
 
