@@ -52,6 +52,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/board",
+    component: () => import("../views/bulletinBoard/bulletinBoard.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -95,7 +95,7 @@
                   </div>
                   <div class="flex items-center h-8">
                     <i class="text-gray-500 el-icon-date mr-2"></i>
-                    <span class="text-xs">计划看板</span>
+                    <span class="text-xs" @click="toBoard">计划看板</span>
                   </div>
                   <div class="flex items-center h-8">
                     <i class="text-gray-500 el-icon-bicycle mr-2"></i>
@@ -178,6 +178,9 @@ export default {
     },
     toSettings() {
       this.$router.push("./setting");
+    },
+    toBoard() {
+      this.$router.push("./board");
     },
     logout() {
       this.$store.commit("SET_USERINFO", {});
