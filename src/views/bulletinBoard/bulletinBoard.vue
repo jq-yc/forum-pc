@@ -46,12 +46,18 @@
     </div>
     <!-- 拖拽看板 -->
     <div class="drag-board flex">
-      <div class="board-item hover:bg-gray-200 rounded-2xl mt-2 p-4">
+      <div
+        class="board-item hover:bg-gray-200 rounded-2xl mt-2 p-4"
+        v-for="(item, index) in boardList"
+        :key="index"
+      >
         <!-- 标题栏 -->
         <div class="title-block mt-1 mb-2 flex items-center justify-between">
           <div>
-            ✅ x月完成
-            <span class="text-gray-400">(3)</span>
+            ✅{{ item.title }}
+            <span class="text-gray-400"
+              >({{ item.content.length | handleLength }})</span
+            >
           </div>
 
           <div>
@@ -86,39 +92,142 @@
                 </div>
               </div>
             </div>
-            <div class="ceshi mt-2">xxxx项目</div>
-            <div class="ceshi mt-2">xxxx项目</div>
           </div>
           <!-- 下-添加卡片 -->
-          <div class="add-card"></div>
+          <div
+            class="add-card p-2 rounded-full bg-yellow-400 my-2"
+            v-for="(card, cardIndex) in item.content"
+            :key="cardIndex"
+          >
+            {{ card.title }}
+          </div>
+          <div class="add-card" v-if="item.showInput">
+            <div class="flex flex-wrap justify-end mt-2">
+              <textarea
+                placeholder-class="textarea-placeholder"
+                placeholder="输入卡片名称"
+                v-model="cardTitle"
+                class="overflow-hidden rounded-xl outline-none p-2 w-full mb-2"
+              />
+              <el-button type="text" @click="$set(item, 'showInput', false)"
+                >取消</el-button
+              >
+              <el-button
+                type="primary"
+                round
+                class="bg-self-blue tracking-widest w-16 text-justify"
+                size="small"
+                @click="addCard(index)"
+                >添加</el-button
+              >
+            </div>
+          </div>
+          <div
+            class="add-card text-center bg-white p-2 rounded-full my-2"
+            @click="$set(item, 'showInput', true)"
+            v-else
+          >
+            <span class="cursor-pointer">
+              <i class="el-icon-plus"></i>
+              添加卡片
+            </span>
+          </div>
         </div>
       </div>
       <div class="board-item hover:bg-gray-200 rounded-2xl mt-2 p-4">
-        <span class="cursor-pointer text-self-blue" @click="showInput">
-          <i class="el-icon-plus"></i>
-          添加列表
-        </span>
-        <div class="flex flex-wrap justify-end">
-          <input class="overflow-hidden rounded-xl outline-none p-2 w-full" />
-          <el-button type="text">取消</el-button>
+        <div class="flex flex-wrap justify-end" v-if="active">
+          <textarea
+            placeholder-class="textarea-placeholder"
+            placeholder="输入列表名称"
+            v-model="boardTitle"
+            class="overflow-hidden rounded-xl outline-none p-2 w-full"
+          />
+          <el-button type="text" @click="active = false">取消</el-button>
           <el-button
             type="primary"
             round
             class="bg-self-blue tracking-widest w-16 text-justify"
             size="small"
+            @click="addBoard"
             >添加</el-button
           >
         </div>
+        <span
+          class="cursor-pointer text-self-blue"
+          @click="active = true"
+          v-else
+        >
+          <i class="el-icon-plus"></i>
+          添加列表
+        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      active: false,
+      boardList: [],
+      boardTitle: "",
+      cardTitle: "",
+    };
+  },
+  methods: {
+    addBoard() {
+      this.boardList.push({
+        title: this.boardTitle,
+        content: [],
+        showInput: false,
+      });
+      this.boardTitle = "";
+    },
+    addCard(index) {
+      const content = this.boardList[index].content;
+      content.push({
+        title: this.cardTitle,
+      });
+      this.$set(this.boardList[index], "content", content);
+      this.cardTitle = "";
+    },
+  },
+  filters: {
+    handleLength(length) {
+      if (length === 0) {
+        length = "0";
+      }
+      return length;
+    },
+  },
+  watch: {
+    boardList: {
+      handler(newval) {
+        if (newval) {
+          localStorage.setItem("boardList", JSON.stringify(newval));
+        }
+      },
+      deep: true,
+    },
+  },
+  created() {
+    let boardList = localStorage.getItem("boardList");
+    if (boardList) {
+      try {
+        this.boardList = JSON.parse(boardList);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+};
 </script>
 
 <style scoped>
+.add-card {
+  width: 256px;
+}
 .ceshi {
   border: 1px solid green;
 }

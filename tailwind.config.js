@@ -1,9 +1,11 @@
 module.exports = {
   theme: {
-    colors: {
-      // Configure your color palette here
+    extend: {
+      colors: {
+        // Configure your color palette here
 
-      "self-blue": "#5585c1",
+        "self-blue": "#5585c1",
+      },
     },
   },
 };
